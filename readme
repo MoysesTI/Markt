@@ -1,0 +1,171 @@
+# 🏋️ SUPREMAX - Site de Demonstração
+
+## 🎯 Sobre o Projeto
+Protótipo funcional do e-commerce SUPREMAX, desenvolvido com HTML, CSS e JavaScript puro.
+
+## 📁 Arquivos
+- `index.html` - Estrutura principal do site
+- `styles.css` - Estilos e design responsivo
+- `script.js` - Funcionalidades interativas
+
+## 🚀 Como Usar
+
+### Opção 1: Abrir Localmente
+1. Baixe todos os arquivos (index.html, styles.css, script.js)
+2. Coloque todos na mesma pasta
+3. Abra o arquivo `index.html` no seu navegador
+
+### Opção 2: Usar um Servidor Local
+```bash
+# Com Python 3
+python -m http.server 8000
+
+# Com Node.js (http-server)
+npx http-server
+
+# Depois acesse: http://localhost:8000
+```
+
+## ✨ Funcionalidades Implementadas
+
+### 🎨 Design
+- ✅ Layout moderno e profissional
+- ✅ Cores neutras (preto, cinza, branco) com detalhes em vermelho
+- ✅ Design 100% responsivo
+- ✅ Animações suaves e elegantes
+
+### 🛍️ E-commerce
+- ✅ Catálogo de produtos com 8 itens
+- ✅ Sistema de filtros por categoria (Whey, Creatina, Pré-Treino)
+- ✅ Carrinho de compras funcional
+- ✅ Adicionar/remover produtos
+- ✅ Controle de quantidade
+- ✅ Cálculo automático do total
+- ✅ Sistema de favoritos
+
+### 🎪 Interface
+- ✅ Hero slider com 3 slides automáticos
+- ✅ Barra de promoções
+- ✅ Menu de navegação responsivo
+- ✅ Busca (interface pronta)
+- ✅ Modal de login
+- ✅ Modal de carrinho
+- ✅ Notificações animadas
+- ✅ Cards de benefícios
+- ✅ Categorias em destaque
+- ✅ Footer completo com redes sociais
+
+### 📱 Responsividade
+- ✅ Desktop (1920px+)
+- ✅ Laptop (1200px+)
+- ✅ Tablet (768px+)
+- ✅ Mobile (576px+)
+
+## 🎨 Paleta de Cores
+
+```css
+Primárias:
+- Preto: #1a1a1a
+- Cinza Escuro: #2d2d2d
+- Branco: #ffffff
+
+Destaque:
+- Vermelho: #e74c3c
+- Vermelho Escuro: #c0392b
+
+Secundárias:
+- Cinza Claro: #b0b0b0
+- Fundo Claro: #f5f5f5
+```
+
+## 🛠️ Tecnologias
+
+- **HTML5** - Estrutura semântica
+- **CSS3** - Flexbox, Grid, Animações
+- **JavaScript ES6+** - Interatividade
+- **Font Awesome 6** - Ícones
+
+## 📦 Próximos Passos (Para Versão Final)
+
+### Backend
+- [ ] API REST com Node.js + Express
+- [ ] Banco de dados MongoDB
+- [ ] Autenticação JWT
+- [ ] Sistema de pedidos
+
+### Integrações
+- [ ] Gateway de pagamento (PagSeguro/Mercado Pago)
+- [ ] API dos Correios (cálculo de frete)
+- [ ] WhatsApp Business
+- [ ] Google Analytics
+
+### Features
+- [ ] Painel administrativo
+- [ ] Sistema de cupons
+- [ ] Avaliações de produtos
+- [ ] Recomendações inteligentes
+- [ ] Newsletter
+
+## 📝 Notas Técnicas
+
+### JavaScript
+O site usa JavaScript vanilla (sem frameworks) para:
+- Gerenciamento de estado do carrinho
+- Slider automático do hero
+- Sistema de filtros
+- Modais e animações
+- Notificações
+
+### CSS
+Técnicas utilizadas:
+- CSS Grid e Flexbox
+- CSS Variables para temas
+- Animações @keyframes
+- Media queries para responsividade
+- Gradientes lineares
+
+## 🎯 Demonstração das Funcionalidades
+
+1. **Adicionar ao Carrinho**: Clique em qualquer produto
+2. **Ver Carrinho**: Clique no ícone do carrinho no header
+3. **Filtrar Produtos**: Use as abas acima da grade de produtos
+4. **Login**: Clique em "Entrar" no header
+5. **Favoritar**: Clique no coração em qualquer produto
+
+## 🔧 Customização
+
+### Alterar Cores
+Edite as variáveis CSS em `styles.css`:
+```css
+:root {
+    --primary: #1a1a1a;    /* Cor primária */
+    --accent: #e74c3c;     /* Cor de destaque */
+    /* ... */
+}
+```
+
+### Adicionar Produtos
+Edite o array `products` em `script.js`:
+```javascript
+const products = [
+    {
+        id: 9,
+        name: "Novo Produto",
+        category: "whey",
+        price: 149.90,
+        // ...
+    }
+];
+```
+
+## 📞 Suporte
+
+Desenvolvido por **Prisma Tech**
+- 🌐 Website: prismatech.com.br
+- 📧 Email: contato@prismatech.com.br
+- 💬 Discord: https://discord.gg/hevRWSad
+
+---
+
+### 💪 SUPREMAX - HIGH PERFORMANCE
+**Protótipo desenvolvido para demonstração comercial**

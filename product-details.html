@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto - SUPREMAX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .product-details-section {
+            padding: 60px 0;
+            background: var(--bg-light);
+            min-height: 80vh;
+        }
+
+        .product-details-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .product-gallery {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            position: sticky;
+            top: 100px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            background: var(--bg-light);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-badge-detail {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .product-info-detail {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        .product-title-detail {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .product-brand {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .rating-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .stars-large {
+            color: #f39c12;
+            font-size: 1.5rem;
+        }
+
+        .rating-score {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .rating-count {
+            color: var(--text-secondary);
+        }
+
+        .price-detail {
+            margin-bottom: 30px;
+        }
+
+        .price-old-detail {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .price-current-detail {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent);
+            display: block;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .product-options {
+            margin-bottom: 30px;
+        }
+
+        .option-label {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: block;
+            color: var(--primary);
+        }
+
+        .flavor-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .flavor-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .flavor-btn:hover,
+        .flavor-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .quantity-control-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--bg-light);
+            border-radius: 50px;
+            padding: 10px 20px;
+        }
+
+        .quantity-btn-detail {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn-detail:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .quantity-display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .actions-detail {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-buy-now {
+            flex: 2;
+            padding: 18px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-buy-now:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn-add-detail {
+            flex: 2;
+            padding: 18px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-add-detail:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-favorite-detail {
+            flex: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-light);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-favorite-detail:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .shipping-info {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .shipping-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .shipping-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .shipping-input input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-calc-shipping {
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-calc-shipping:hover {
+            background: var(--accent);
+        }
+
+        .product-tabs {
+            margin-top: 40px;
+        }
+
+        .tabs-header {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-item {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .info-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .info-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+
+        .benefits-list i {
+            color: var(--success);
+            font-size: 1.3rem;
+        }
+
+        .how-to-use {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 12px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 992px) {
+            .product-details-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-gallery {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-title-detail {
+                font-size: 2rem;
+            }
+
+            .price-current-detail {
+                font-size: 2.5rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .actions-detail {
+                flex-direction: column;
+            }
+
+            .btn-favorite-detail {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Promoção -->
+    <div class="promo-bar">
+        <div class="promo-content">
+            <i class="fas fa-truck"></i>
+            <span>FRETE GRÁTIS em compras acima de R$ 250,00</span>
+            <i class="fas fa-percent"></i>
+            <span>10% OFF no boleto ou PIX</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
+                    <h1>SUPREMAX</h1>
+                    <span class="tagline">HIGH PERFORMANCE</span>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Busque por produtos, marcas...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div class="header-actions">
+                    <button class="header-btn">
+                        <i class="fas fa-user"></i>
+                        <span>Entrar</span>
+                    </button>
+                    <button class="header-btn">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge" id="favCount">0</span>
+                    </button>
+                    <button class="header-btn cart-btn" onclick="window.location.href='index.html#cart'">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cartCountDetail">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Detalhes do Produto -->
+    <section class="product-details-section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="index.html" id="breadcrumbCategory">Categoria</a>
+                <i class="fas fa-chevron-right"></i>
+                <span id="breadcrumbProduct">Produto</span>
+            </div>
+
+            <div class="product-details-container">
+                <!-- Galeria -->
+                <div class="product-gallery">
+                    <div class="main-image" id="productMainImage">
+                        <span class="product-badge-detail" id="productBadge"></span>
+                    </div>
+                </div>
+
+                <!-- Informações -->
+                <div class="product-info-detail">
+                    <span class="product-brand" id="productBrand">SUPREMAX</span>
+                    <h1 class="product-title-detail" id="productTitle">Carregando...</h1>
+                    
+                    <div class="rating-detail">
+                        <span class="stars-large" id="productStars">★★★★★</span>
+                        <span class="rating-score" id="productRating">5.0</span>
+                        <span class="rating-count" id="productReviews">(0 avaliações)</span>
+                    </div>
+
+                    <div class="price-detail">
+                        <span class="price-old-detail" id="productOldPrice" style="display: none;"></span>
+                        <span class="price-current-detail" id="productPrice">R$ 0,00</span>
+                        <span class="discount-badge" id="discountBadge" style="display: none;"></span>
+                    </div>
+
+                    <div class="product-options">
+                        <label class="option-label">Escolha o sabor:</label>
+                        <div class="flavor-options" id="flavorOptions">
+                            <!-- Sabores serão inseridos aqui -->
+                        </div>
+                    </div>
+
+                    <div class="quantity-selector">
+                        <label class="option-label">Quantidade:</label>
+                        <div class="quantity-control-detail">
+                            <button class="quantity-btn-detail" onclick="updateQuantityDetail(-1)">-</button>
+                            <span class="quantity-display" id="quantityDisplay">1</span>
+                            <button class="quantity-btn-detail" onclick="updateQuantityDetail(1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="actions-detail">
+                        <button class="btn-buy-now" onclick="buyNow()">
+                            <i class="fas fa-bolt"></i>
+                            COMPRAR AGORA
+                        </button>
+                        <button class="btn-add-detail" onclick="addToCartFromDetail()">
+                            <i class="fas fa-shopping-cart"></i>
+                            ADICIONAR AO CARRINHO
+                        </button>
+                        <button class="btn-favorite-detail">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="shipping-info">
+                        <h4><i class="fas fa-truck"></i> Calcular Frete</h4>
+                        <div class="shipping-input">
+                            <input type="text" placeholder="Digite seu CEP" maxlength="9" id="cepInput">
+                            <button class="btn-calc-shipping" onclick="calculateShipping()">CALCULAR</button>
+                        </div>
+                        <div id="shippingResult" style="margin-top: 15px; display: none;"></div>
+                    </div>
+
+                    <div class="product-tabs">
+                        <div class="tabs-header">
+                            <button class="tab-btn active" data-tab="description">Descrição</button>
+                            <button class="tab-btn" data-tab="composition">Composição</button>
+                            <button class="tab-btn" data-tab="benefits">Benefícios</button>
+                            <button class="tab-btn" data-tab="usage">Modo de Uso</button>
+                        </div>
+
+                        <div class="tab-content active" id="description">
+                            <p id="productDescription" style="line-height: 1.8; color: var(--text-dark);"></p>
+                        </div>
+
+                        <div class="tab-content" id="composition">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <h4>Informação Nutricional</h4>
+                                    <p id="productComposition"></p>
+                                </div>
+                                <div class="info-item">
+                                    <h4>Especificações</h4>
+                                    <p>
+                                        <strong>Peso:</strong> <span id="productWeight"></span><br>
+                                        <strong>Porções:</strong> <span id="productServings"></span><br>
+                                        <strong>Marca:</strong> <span id="productBrandInfo"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="benefits">
+                            <ul class="benefits-list" id="productBenefits">
+                                <!-- Benefícios serão inseridos aqui -->
+                            </ul>
+                        </div>
+
+                        <div class="tab-content" id="usage">
+                            <div class="how-to-use">
+                                <h4 style="margin-bottom: 15px;">Como usar:</h4>
+                                <p id="usageInstructions"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <h3>SUPREMAX</h3>
+                        <p class="tagline">HIGH PERFORMANCE</p>
+                    </div>
+                    <p>Suplementos de alta qualidade para potencializar seus resultados.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Institucional</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Trabalhe Conosco</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Trocas e Devoluções</a></li>
+                        <li><a href="#">Rastreamento</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> (11) 98888-5421</li>
+                        <li><i class="fas fa-envelope"></i> contato@supremaxfit.com.br</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 SUPREMAX - Todos os direitos reservados</p>
+                <p class="dev-credit">Desenvolvido por <strong>Prisma Tech</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Carregar detalhes do produto
+        let currentQuantity = 1;
+        let currentProduct = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const productId = parseInt(localStorage.getItem('selectedProduct'));
+            currentProduct = products.find(p => p.id === productId);
+            
+            if (!currentProduct) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            loadProductDetails();
+            initTabs();
+            updateCartCountDetail();
+        });
+
+        function loadProductDetails() {
+            // Título e categoria
+            document.getElementById('productTitle').textContent = currentProduct.name;
+            document.getElementById('breadcrumbProduct').textContent = currentProduct.name;
+            document.getElementById('breadcrumbCategory').textContent = getCategoryName(currentProduct.category);
+            
+            // Marca e Badge
+            document.getElementById('productBrand').textContent = currentProduct.brand;
+            if (currentProduct.badge) {
+                document.getElementById('productBadge').textContent = currentProduct.badge;
+            } else {
+                document.getElementById('productBadge').style.display = 'none';
+            }
+
+            // Imagem
+            const mainImage = document.getElementById('productMainImage');
+            mainImage.innerHTML = `
+                <img src="${currentProduct.image}" 
+                     alt="${currentProduct.name}" 
+                     style="width: 100%; height: 100%; object-fit: contain; padding: 40px;"
+                     onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, ${getGradientColor(currentProduct.category)} 0%, ${getGradientColor(currentProduct.category, true)} 100%)';">
+                ${currentProduct.badge ? `<span class="product-badge-detail">${currentProduct.badge}</span>` : ''}
+            `;
+            
+            // Rating
+            const stars = '★'.repeat(Math.floor(currentProduct.rating)) + '☆'.repeat(5 - Math.floor(currentProduct.rating));
+            document.getElementById('productStars').textContent = stars;
+            document.getElementById('productRating').textContent = currentProduct.rating.toFixed(1);
+            document.getElementById('productReviews').textContent = `(${currentProduct.reviews} avaliações)`;
+
+            // Preço
+            document.getElementById('productPrice').textContent = `R$ ${currentProduct.price.toFixed(2)}`;
+            if (currentProduct.oldPrice) {
+                document.getElementById('productOldPrice').textContent = `R$ ${currentProduct.oldPrice.toFixed(2)}`;
+                document.getElementById('productOldPrice').style.display = 'block';
+                
+                const discount = Math.round((1 - currentProduct.price / currentProduct.oldPrice) * 100);
+                document.getElementById('discountBadge').textContent = `${discount}% OFF`;
+                document.getElementById('discountBadge').style.display = 'inline-block';
+            }
+
+            // Sabores
+            const flavors = currentProduct.flavor.split(', ');
+            const flavorContainer = document.getElementById('flavorOptions');
+            flavorContainer.innerHTML = '';
+            flavors.forEach((flavor, index) => {
+                const btn = document.createElement('button');
+                btn.classList.add('flavor-btn');
+                if (index === 0) btn.classList.add('active');
+                btn.textContent = flavor;
+                btn.onclick = function() {
+                    document.querySelectorAll('.flavor-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                };
+                flavorContainer.appendChild(btn);
+            });
+
+            // Descrição
+            document.getElementById('productDescription').textContent = currentProduct.description;
+
+            // Composição
+            document.getElementById('productComposition').textContent = currentProduct.composition;
+            document.getElementById('productWeight').textContent = currentProduct.weight;
+            document.getElementById('productServings').textContent = `${currentProduct.servings} doses`;
+            document.getElementById('productBrandInfo').textContent = currentProduct.brand;
+
+            // Benefícios
+            const benefitsList = document.getElementById('productBenefits');
+            benefitsList.innerHTML = '';
+            currentProduct.benefits.forEach(benefit => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check-circle"></i> <strong>${benefit}</strong>`;
+                benefitsList.appendChild(li);
+            });
+
+            // Modo de uso
+            document.getElementById('usageInstructions').innerHTML = getUsageInstructions(currentProduct.category);
+        }
+
+        function getUsageInstructions(category) {
+            const instructions = {
+                'whey': 'Misture 1 medidor (30g) em 200-300ml de água ou leite. Consuma imediatamente após o treino ou conforme orientação do nutricionista. Pode ser consumido também no café da manhã ou entre as refeições.',
+                'creatina': 'Misture 1 dose (3-5g) em água, suco ou junto com seu whey protein. Consuma diariamente, preferencialmente após o treino. Não necessita fase de saturação.',
+                'pre-treino': 'Misture 1 dose (10g) em 200ml de água. Consuma 20-30 minutos antes do treino. Não exceda 1 dose por dia. Evite consumir 6 horas antes de dormir.'
+            };
+            return instructions[category] || 'Consulte um nutricionista para orientações personalizadas.';
+        }
+
+        function initTabs() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(tabName).classList.add('active');
+                });
+            });
+        }
+
+        function updateQuantityDetail(change) {
+            currentQuantity += change;
+            if (currentQuantity < 1) currentQuantity = 1;
+            if (currentQuantity > 10) currentQuantity = 10;
+            document.getElementById('quantityDisplay').textContent = currentQuantity;
+        }
+
+        function addToCartFromDetail() {
+            const selectedFlavor = document.querySelector('.flavor-btn.active').textContent;
+            
+            for (let i = 0; i < currentQuantity; i++) {
+                addToCart(currentProduct.id);
+            }
+            
+            showNotification(`${currentQuantity}x ${currentProduct.name} adicionado ao carrinho!`);
+            currentQuantity = 1;
+            document.getElementById('quantityDisplay').textContent = '1';
+        }
+
+        function buyNow() {
+            addToCartFromDetail();
+            setTimeout(() => {
+                window.location.href = 'checkout.html';
+            }, 500);
+        }
+
+        function calculateShipping() {
+            const cep = document.getElementById('cepInput').value;
+            const resultDiv = document.getElementById('shippingResult');
+            
+            if (cep.length < 8) {
+                showNotification('Por favor, digite um CEP válido');
+                return;
+            }
+
+            // Simulação de cálculo de frete
+            resultDiv.innerHTML = `
+                <div style="padding: 15px; background: white; border-radius: 8px; border-left: 4px solid var(--success);">
+                    <strong><i class="fas fa-check-circle" style="color: var(--success);"></i> Frete Calculado</strong><br>
+                    <p style="margin: 10px 0 0;">PAC: R$ 15,90 (5-7 dias úteis)</p>
+                    <p style="margin: 5px 0 0;">SEDEX: R$ 25,90 (2-3 dias úteis)</p>
+                    <p style="margin: 5px 0 0; color: var(--success);"><strong>FRETE GRÁTIS</strong> em compras acima de R$ 250,00</p>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+        }
+
+        function updateCartCountDetail() {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCountDetail').textContent = count;
+        }
+    </script>
+</body>
+</html>

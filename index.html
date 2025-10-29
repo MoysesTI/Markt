@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPREMAX - Suplementos de Alta Performance</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de Promoção -->
+    <div class="promo-bar">
+        <div class="promo-content">
+            <i class="fas fa-truck"></i>
+            <span>FRETE GRÁTIS em compras acima de R$ 250,00</span>
+            <i class="fas fa-percent"></i>
+            <span>10% OFF no boleto ou PIX</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <h1>SUPREMAX</h1>
+                    <span class="tagline">HIGH PERFORMANCE</span>
+                </div>
+
+                <!-- Busca -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Busque por produtos, marcas..." id="searchInput">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <!-- Actions -->
+                <div class="header-actions">
+                    <button class="header-btn" id="loginBtn">
+                        <i class="fas fa-user"></i>
+                        <span>Entrar</span>
+                    </button>
+                    <button class="header-btn" id="favoritesBtn">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge">0</span>
+                    </button>
+                    <button class="header-btn cart-btn" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge" id="cartCount">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navegação -->
+            <nav class="nav">
+                <button class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                    CATEGORIAS
+                </button>
+                <ul class="nav-list" id="navList">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#whey">WHEY PROTEIN</a></li>
+                    <li><a href="#creatina">CREATINA</a></li>
+                    <li><a href="#pre-treino">PRÉ-TREINO</a></li>
+                    <li><a href="#vitaminas">VITAMINAS</a></li>
+                    <li><a href="#snacks">SNACKS</a></li>
+                    <li><a href="#outlet" class="outlet">OUTLET</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-slider" id="heroSlider">
+            <!-- Slide 1 -->
+            <div class="hero-slide active">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <span class="hero-label">LANÇAMENTO</span>
+                        <h2 class="hero-title">
+                            TURBINE SEUS<br>
+                            <span class="highlight">RESULTADOS</span>
+                        </h2>
+                        <p class="hero-subtitle">Whey Protein isolado de última geração</p>
+                        <button class="btn btn-primary">
+                            COMPRAR AGORA
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="hero-image">
+                        <div class="product-showcase"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <span class="hero-label">PROMOÇÃO</span>
+                        <h2 class="hero-title">
+                            ATÉ <span class="highlight">50% OFF</span><br>
+                            EM CREATINAS
+                        </h2>
+                        <p class="hero-subtitle">Ganhe mais força e resistência</p>
+                        <button class="btn btn-primary">
+                            VER OFERTAS
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="hero-image">
+                        <div class="product-showcase creatine"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="hero-slide">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <span class="hero-label">COMBOS</span>
+                        <h2 class="hero-title">
+                            KITS COMPLETOS<br>
+                            <span class="highlight">PARA SEU TREINO</span>
+                        </h2>
+                        <p class="hero-subtitle">Economia de até 30% em kits</p>
+                        <button class="btn btn-primary">
+                            MONTAR KIT
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="hero-image">
+                        <div class="product-showcase combo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles do Slider -->
+        <div class="hero-controls">
+            <button class="hero-arrow prev" id="prevSlide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="hero-dots" id="heroDots"></div>
+            <button class="hero-arrow next" id="nextSlide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section class="benefits">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Frete Grátis</h3>
+                    <p>Acima de R$ 250</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Compra Segura</h3>
+                    <p>Site protegido</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Parcelamento</h3>
+                    <p>Até 6x sem juros</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Atendimento</h3>
+                    <p>Nutricionista online</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorias -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Categorias em Destaque</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image whey"></div>
+                    <h3>Whey Protein</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-image creatine"></div>
+                    <h3>Creatina</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-image pre-workout"></div>
+                    <h3>Pré-Treino</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-image vitamins"></div>
+                    <h3>Vitaminas</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos em Destaque -->
+    <section class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Produtos em Destaque</h2>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">Todos</button>
+                    <button class="filter-tab" data-filter="whey">Whey</button>
+                    <button class="filter-tab" data-filter="creatina">Creatina</button>
+                    <button class="filter-tab" data-filter="pre-treino">Pré-Treino</button>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Produtos serão inseridos via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner CTA -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Não sabe qual suplemento escolher?</h2>
+                <p>Converse com nosso nutricionista esportivo gratuitamente</p>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-comments"></i>
+                    FALAR COM ESPECIALISTA
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <h3>SUPREMAX</h3>
+                        <p class="tagline">HIGH PERFORMANCE</p>
+                    </div>
+                    <p>Suplementos de alta qualidade para potencializar seus resultados.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Institucional</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Trabalhe Conosco</a></li>
+                        <li><a href="#">Seja um Revendedor</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Trocas e Devoluções</a></li>
+                        <li><a href="#">Rastreamento</a></li>
+                        <li><a href="#">Formas de Pagamento</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> (11) 98888-5421</li>
+                        <li><i class="fas fa-envelope"></i> contato@supremaxfit.com.br</li>
+                        <li><i class="fas fa-clock"></i> Seg a Sex: 8h às 18h</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 SUPREMAX - Todos os direitos reservados</p>
+                <p class="dev-credit">Desenvolvido por <strong>Prisma Tech</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeLogin">&times;</button>
+            <h2>Entrar na sua conta</h2>
+            <form class="login-form">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary full-width">ENTRAR</button>
+                <a href="#" class="forgot-password">Esqueci minha senha</a>
+                <div class="divider">ou</div>
+                <button type="button" class="btn btn-outline full-width">CRIAR CONTA</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Carrinho -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content cart-modal">
+            <button class="modal-close" id="closeCart">&times;</button>
+            <h2>Meu Carrinho</h2>
+            <div class="cart-items" id="cartItems">
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Seu carrinho está vazio</p>
+                </div>
+            </div>
+            <div class="cart-footer" id="cartFooter" style="display: none;">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <strong id="cartTotal">R$ 0,00</strong>
+                </div>
+                <button class="btn btn-primary full-width" onclick="goToCheckout()">FINALIZAR COMPRA</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

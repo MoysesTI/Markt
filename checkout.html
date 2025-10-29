@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - SUPREMAX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .checkout-section {
+            padding: 60px 0;
+            background: var(--bg-light);
+            min-height: 100vh;
+        }
+
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+        }
+
+        .checkout-main {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .checkout-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .checkout-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .checkout-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-number {
+            background: var(--accent);
+            color: white;
+        }
+
+        .step.completed .step-number {
+            background: var(--success);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .step.active .step-label {
+            color: var(--accent);
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: var(--border);
+        }
+
+        .step.completed + .step-line {
+            background: var(--success);
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .section-header i {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+
+        .section-header h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-field label {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .form-field input,
+        .form-field select {
+            padding: 14px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .saved-address {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .saved-address:hover {
+            border-color: var(--accent);
+        }
+
+        .saved-address.selected {
+            border-color: var(--accent);
+            background: rgba(231, 76, 60, 0.05);
+        }
+
+        .payment-methods {
+            display: grid;
+            gap: 15px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            border-color: var(--accent);
+        }
+
+        .payment-option.selected {
+            border-color: var(--accent);
+            background: rgba(231, 76, 60, 0.05);
+        }
+
+        .payment-radio {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .payment-option.selected .payment-radio::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .payment-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .payment-info {
+            flex: 1;
+        }
+
+        .payment-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .payment-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .payment-details {
+            display: none;
+            margin-top: 20px;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid var(--accent);
+        }
+
+        .payment-details.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .installments-select {
+            margin-top: 15px;
+        }
+
+        .pix-container {
+            text-align: center;
+        }
+
+        .pix-qrcode {
+            width: 250px;
+            height: 250px;
+            background: var(--bg-light);
+            margin: 20px auto;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .pix-code {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 20px 0;
+        }
+
+        .btn-copy {
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-copy:hover {
+            background: var(--accent);
+        }
+
+        .checkout-summary {
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .cart-items-summary {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 25px;
+        }
+
+        .summary-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+        }
+
+        .summary-item-info {
+            flex: 1;
+        }
+
+        .summary-item-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .summary-item-qty {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .summary-item-price {
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .summary-totals {
+            border-top: 2px solid var(--bg-light);
+            padding-top: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .summary-row.total {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--bg-light);
+        }
+
+        .summary-row.total .value {
+            color: var(--accent);
+        }
+
+        .discount-code {
+            margin-bottom: 20px;
+        }
+
+        .discount-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .discount-input input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .btn-apply {
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-apply:hover {
+            background: var(--accent);
+        }
+
+        .btn-finish-purchase {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-finish-purchase:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--bg-light);
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .security-badge i {
+            color: var(--success);
+        }
+
+        @media (max-width: 992px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-summary {
+                position: relative;
+                top: 0;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Promoção -->
+    <div class="promo-bar">
+        <div class="promo-content">
+            <i class="fas fa-lock"></i>
+            <span>COMPRA 100% SEGURA E PROTEGIDA</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
+                    <h1>SUPREMAX</h1>
+                    <span class="tagline">HIGH PERFORMANCE</span>
+                </div>
+
+                <div class="header-actions">
+                    <button class="header-btn" onclick="window.location.href='index.html'">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Checkout -->
+    <section class="checkout-section">
+        <div class="container">
+            <!-- Indicador de Passos -->
+            <div class="step-indicator">
+                <div class="step completed">
+                    <div class="step-number">1</div>
+                    <span class="step-label">Carrinho</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step active">
+                    <div class="step-number">2</div>
+                    <span class="step-label">Dados</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <span class="step-label">Pagamento</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <span class="step-label">Confirmação</span>
+                </div>
+            </div>
+
+            <div class="checkout-container">
+                <!-- Formulário Principal -->
+                <div class="checkout-main">
+                    <!-- Dados Pessoais -->
+                    <div class="checkout-card">
+                        <h2 class="checkout-title">Dados Pessoais</h2>
+                        <p class="checkout-subtitle">Preencha seus dados para continuar</p>
+
+                        <div class="form-section">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label>Nome Completo *</label>
+                                    <input type="text" placeholder="Seu nome completo" required>
+                                </div>
+                                <div class="form-field">
+                                    <label>CPF *</label>
+                                    <input type="text" placeholder="000.000.000-00" maxlength="14" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label>E-mail *</label>
+                                    <input type="email" placeholder="seu@email.com" required>
+                                </div>
+                                <div class="form-field">
+                                    <label>Telefone *</label>
+                                    <input type="tel" placeholder="(00) 00000-0000" maxlength="15" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Endereço de Entrega -->
+                    <div class="checkout-card">
+                        <div class="section-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Endereço de Entrega</h3>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>CEP *</label>
+                                <input type="text" placeholder="00000-000" maxlength="9" id="cep-checkout" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Estado *</label>
+                                <select required>
+                                    <option>Selecione</option>
+                                    <option>São Paulo</option>
+                                    <option>Rio de Janeiro</option>
+                                    <option>Minas Gerais</option>
+                                    <option>Espírito Santo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>Cidade *</label>
+                                <input type="text" placeholder="Sua cidade" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Bairro *</label>
+                                <input type="text" placeholder="Seu bairro" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field" style="grid-column: 1 / 3;">
+                                <label>Endereço *</label>
+                                <input type="text" placeholder="Rua, Avenida, etc." required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>Número *</label>
+                                <input type="text" placeholder="000" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Complemento</label>
+                                <input type="text" placeholder="Apto, Bloco, etc.">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Método de Pagamento -->
+                    <div class="checkout-card">
+                        <div class="section-header">
+                            <i class="fas fa-credit-card"></i>
+                            <h3>Método de Pagamento</h3>
+                        </div>
+
+                        <div class="payment-methods">
+                            <!-- PIX -->
+                            <div class="payment-option" data-method="pix">
+                                <div class="payment-radio"></div>
+                                <div class="payment-icon" style="color: #00D9C5;">
+                                    <i class="fas fa-qrcode"></i>
+                                </div>
+                                <div class="payment-info">
+                                    <div class="payment-name">PIX</div>
+                                    <div class="payment-desc">Aprovação imediata - 10% de desconto</div>
+                                </div>
+                            </div>
+
+                            <div class="payment-details" id="pix-details">
+                                <div class="pix-container">
+                                    <h4 style="margin-bottom: 20px;">Pagamento via PIX</h4>
+                                    <div class="pix-qrcode">
+                                        <i class="fas fa-qrcode"></i>
+                                    </div>
+                                    <p style="margin-bottom: 15px; color: var(--text-secondary);">
+                                        Escaneie o QR Code acima com o app do seu banco ou copie o código abaixo:
+                                    </p>
+                                    <div class="pix-code" id="pixCode">
+                                        00020126580014BR.GOV.BCB.PIX0114+55119888854210219SUPREMAX5303986540550.005802BR5913SUPREMAX6009SAO PAULO
+                                    </div>
+                                    <button class="btn-copy" onclick="copyPixCode()">
+                                        <i class="fas fa-copy"></i> COPIAR CÓDIGO PIX
+                                    </button>
+                                    <p style="margin-top: 20px; font-size: 0.9rem; color: var(--success); font-weight: 600;">
+                                        <i class="fas fa-check-circle"></i> Desconto de 10% já aplicado!
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Cartão de Crédito -->
+                            <div class="payment-option" data-method="credit">
+                                <div class="payment-radio"></div>
+                                <div class="payment-icon" style="color: #4285F4;">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div class="payment-info">
+                                    <div class="payment-name">Cartão de Crédito</div>
+                                    <div class="payment-desc">Parcelamento em até 6x sem juros</div>
+                                </div>
+                            </div>
+
+                            <div class="payment-details" id="credit-details">
+                                <h4 style="margin-bottom: 20px;">Dados do Cartão</h4>
+                                <div class="form-row full">
+                                    <div class="form-field">
+                                        <label>Número do Cartão *</label>
+                                        <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                                    </div>
+                                </div>
+                                <div class="form-row full">
+                                    <div class="form-field">
+                                        <label>Nome no Cartão *</label>
+                                        <input type="text" placeholder="Como está no cartão" required>
+                                    </div>
+                                </div>
+                                <div class="card-grid">
+                                    <div class="form-field">
+                                        <label>Validade *</label>
+                                        <input type="text" placeholder="MM/AA" maxlength="5" required>
+                                    </div>
+                                    <div class="form-field">
+                                        <label>CVV *</label>
+                                        <input type="text" placeholder="000" maxlength="3" required>
+                                    </div>
+                                    <div class="form-field">
+                                        <label>Parcelas *</label>
+                                        <select required id="installmentsSelect">
+                                            <option>1x sem juros</option>
+                                            <option>2x sem juros</option>
+                                            <option>3x sem juros</option>
+                                            <option>4x sem juros</option>
+                                            <option>5x sem juros</option>
+                                            <option>6x sem juros</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Boleto -->
+                            <div class="payment-option" data-method="boleto">
+                                <div class="payment-radio"></div>
+                                <div class="payment-icon" style="color: #FF6B00;">
+                                    <i class="fas fa-barcode"></i>
+                                </div>
+                                <div class="payment-info">
+                                    <div class="payment-name">Boleto Bancário</div>
+                                    <div class="payment-desc">Vencimento em 3 dias úteis - 5% de desconto</div>
+                                </div>
+                            </div>
+
+                            <div class="payment-details" id="boleto-details">
+                                <div style="text-align: center;">
+                                    <i class="fas fa-barcode" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
+                                    <h4 style="margin-bottom: 15px;">Pagamento via Boleto</h4>
+                                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                                        Após finalizar a compra, você receberá o boleto por e-mail e poderá imprimi-lo ou pagar pela internet.
+                                    </p>
+                                    <p style="font-weight: 600; color: var(--success);">
+                                        <i class="fas fa-check-circle"></i> Desconto de 5% já aplicado!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumo do Pedido -->
+                <div class="checkout-summary">
+                    <div class="summary-card">
+                        <h3 class="summary-title">Resumo do Pedido</h3>
+
+                        <div class="cart-items-summary" id="summaryItems">
+                            <!-- Itens serão inseridos aqui -->
+                        </div>
+
+                        <div class="discount-code">
+                            <label style="font-weight: 600; display: block; margin-bottom: 10px;">Cupom de Desconto</label>
+                            <div class="discount-input">
+                                <input type="text" placeholder="Digite o cupom" id="couponInput">
+                                <button class="btn-apply" onclick="applyCoupon()">APLICAR</button>
+                            </div>
+                        </div>
+
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span class="value" id="subtotalValue">R$ 0,00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Frete:</span>
+                                <span class="value" id="shippingValue">A calcular</span>
+                            </div>
+                            <div class="summary-row" id="discountRow" style="display: none; color: var(--success);">
+                                <span>Desconto:</span>
+                                <span class="value" id="discountValue">-R$ 0,00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total:</span>
+                                <span class="value" id="totalValue">R$ 0,00</span>
+                            </div>
+                        </div>
+
+                        <button class="btn-finish-purchase" onclick="finishPurchase()">
+                            <i class="fas fa-check-circle"></i>
+                            FINALIZAR COMPRA
+                        </button>
+
+                        <div class="security-badges">
+                            <div class="security-badge">
+                                <i class="fas fa-lock"></i>
+                                <span>Compra Segura</span>
+                            </div>
+                            <div class="security-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Dados Protegidos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        let cart = [];
+        let selectedPaymentMethod = 'pix';
+        let discountApplied = false;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCart();
+            initPaymentMethods();
+            renderSummary();
+        });
+
+        function loadCart() {
+            const savedCart = localStorage.getItem('cart');
+            if (!savedCart || savedCart === '[]') {
+                window.location.href = 'index.html';
+                return;
+            }
+            cart = JSON.parse(savedCart);
+        }
+
+        function initPaymentMethods() {
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            const paymentDetails = document.querySelectorAll('.payment-details');
+
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remover seleção anterior
+                    paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                    paymentDetails.forEach(detail => detail.classList.remove('active'));
+
+                    // Adicionar nova seleção
+                    this.classList.add('selected');
+                    selectedPaymentMethod = this.getAttribute('data-method');
+                    
+                    // Mostrar detalhes
+                    const detailId = selectedPaymentMethod + '-details';
+                    document.getElementById(detailId).classList.add('active');
+
+                    // Atualizar totais com desconto se aplicável
+                    updateTotals();
+                });
+            });
+
+            // Selecionar PIX por padrão
+            paymentOptions[0].click();
+        }
+
+        function renderSummary() {
+            const summaryItems = document.getElementById('summaryItems');
+            summaryItems.innerHTML = '';
+
+            cart.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('summary-item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" 
+                         alt="${item.name}"
+                         class="summary-item-image" 
+                         style="object-fit: contain; padding: 5px;"
+                         onerror="this.style.background='linear-gradient(135deg, ${getGradientColor(item.category)} 0%, ${getGradientColor(item.category, true)} 100%)'; this.src='';">
+                    <div class="summary-item-info">
+                        <div class="summary-item-name">${item.name}</div>
+                        <div class="summary-item-qty">Quantidade: ${item.quantity}</div>
+                    </div>
+                    <div class="summary-item-price">R$ ${(item.price * item.quantity).toFixed(2)}</div>
+                `;
+                summaryItems.appendChild(itemDiv);
+            });
+
+            updateTotals();
+        }
+
+        function updateTotals() {
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 250 ? 0 : 15.90;
+
+            let discount = 0;
+            if (selectedPaymentMethod === 'pix') {
+                discount = subtotal * 0.10; // 10% de desconto
+            } else if (selectedPaymentMethod === 'boleto') {
+                discount = subtotal * 0.05; // 5% de desconto
+            }
+
+            const total = subtotal + shipping - discount;
+
+            document.getElementById('subtotalValue').textContent = `R$ ${subtotal.toFixed(2)}`;
+            document.getElementById('shippingValue').textContent = shipping === 0 ? 'GRÁTIS' : `R$ ${shipping.toFixed(2)}`;
+            
+            const discountRow = document.getElementById('discountRow');
+            if (discount > 0) {
+                discountRow.style.display = 'flex';
+                document.getElementById('discountValue').textContent = `-R$ ${discount.toFixed(2)}`;
+            } else {
+                discountRow.style.display = 'none';
+            }
+
+            document.getElementById('totalValue').textContent = `R$ ${total.toFixed(2)}`;
+
+            // Atualizar parcelas do cartão
+            if (selectedPaymentMethod === 'credit') {
+                updateInstallments(total);
+            }
+        }
+
+        function updateInstallments(total) {
+            const select = document.getElementById('installmentsSelect');
+            select.innerHTML = '';
+            for (let i = 1; i <= 6; i++) {
+                const installmentValue = (total / i).toFixed(2);
+                const option = document.createElement('option');
+                option.textContent = `${i}x de R$ ${installmentValue} sem juros`;
+                select.appendChild(option);
+            }
+        }
+
+        function copyPixCode() {
+            const pixCode = document.getElementById('pixCode').textContent;
+            navigator.clipboard.writeText(pixCode).then(() => {
+                showNotification('Código PIX copiado!');
+            });
+        }
+
+        function applyCoupon() {
+            const coupon = document.getElementById('couponInput').value.toUpperCase();
+            const validCoupons = {
+                'PRIMEIRA': 15,
+                'SUPREMAX10': 10,
+                'BEMVINDO': 20
+            };
+
+            if (validCoupons[coupon]) {
+                const discount = validCoupons[coupon];
+                showNotification(`Cupom "${coupon}" aplicado! ${discount}% de desconto`);
+                discountApplied = true;
+                // Aqui você aplicaria o desconto extra
+            } else if (coupon) {
+                showNotification('Cupom inválido');
+            }
+        }
+
+        function finishPurchase() {
+            // Validar dados
+            showNotification('Processando seu pedido...');
+            
+            // Simular processamento
+            setTimeout(() => {
+                // Limpar carrinho
+                localStorage.removeItem('cart');
+                
+                // Redirecionar para página de sucesso
+                showSuccessModal();
+            }, 2000);
+        }
+
+        function showSuccessModal() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+            `;
+            modal.innerHTML = `
+                <div style="background: white; padding: 50px; border-radius: 20px; text-align: center; max-width: 500px;">
+                    <i class="fas fa-check-circle" style="font-size: 5rem; color: var(--success); margin-bottom: 20px;"></i>
+                    <h2 style="font-size: 2rem; margin-bottom: 15px; color: var(--primary);">Pedido Confirmado!</h2>
+                    <p style="margin-bottom: 30px; color: var(--text-secondary);">
+                        Seu pedido foi realizado com sucesso! Você receberá um e-mail com os detalhes.
+                    </p>
+                    <button onclick="window.location.href='index.html'" style="padding: 15px 40px; background: var(--accent); color: white; border: none; border-radius: 10px; font-weight: 700; font-size: 1.1rem; cursor: pointer;">
+                        VOLTAR PARA A LOJA
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+    </script>
+</body>
+</html>

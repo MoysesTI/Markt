@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUPREMAX - Suplementos de Alta Performance</title>
+    <title>BIOVIT - Distribuidora de Suplementos</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Barra de Promoção -->
+    <!-- Barra de Informações -->
     <div class="promo-bar">
         <div class="promo-content">
             <i class="fas fa-truck"></i>
-            <span>FRETE GRÁTIS em compras acima de R$ 250,00</span>
-            <i class="fas fa-percent"></i>
-            <span>10% OFF no boleto ou PIX</span>
+            <span>Entrega para todo ES e RJ</span>
+            <i class="fas fa-award"></i>
+            <span>28 anos de experiência no mercado</span>
         </div>
     </div>
 
@@ -24,13 +24,16 @@
             <div class="header-content">
                 <!-- Logo -->
                 <div class="logo">
-                    <h1>SUPREMAX</h1>
-                    <span class="tagline">HIGH PERFORMANCE</span>
+                    <i class="fas fa-leaf"></i>
+                    <div>
+                        <h1>BIOVIT</h1>
+                        <span class="tagline">DISTRIBUIDORA</span>
+                    </div>
                 </div>
 
                 <!-- Busca -->
                 <div class="search-bar">
-                    <input type="text" placeholder="Busque por produtos, marcas..." id="searchInput">
+                    <input type="text" placeholder="Buscar produtos, marcas..." id="searchInput">
                     <button class="search-btn">
                         <i class="fas fa-search"></i>
                     </button>
@@ -40,11 +43,7 @@
                 <div class="header-actions">
                     <button class="header-btn" id="loginBtn">
                         <i class="fas fa-user"></i>
-                        <span>Entrar</span>
-                    </button>
-                    <button class="header-btn" id="favoritesBtn">
-                        <i class="fas fa-heart"></i>
-                        <span class="badge">0</span>
+                        <span>Área Cliente</span>
                     </button>
                     <button class="header-btn cart-btn" id="cartBtn">
                         <i class="fas fa-shopping-cart"></i>
@@ -57,16 +56,17 @@
             <nav class="nav">
                 <button class="nav-toggle" id="navToggle">
                     <i class="fas fa-bars"></i>
-                    CATEGORIAS
+                    MENU
                 </button>
                 <ul class="nav-list" id="navList">
                     <li><a href="#home">HOME</a></li>
+                    <li><a href="#sobre">SOBRE</a></li>
                     <li><a href="#whey">WHEY PROTEIN</a></li>
                     <li><a href="#creatina">CREATINA</a></li>
                     <li><a href="#pre-treino">PRÉ-TREINO</a></li>
                     <li><a href="#vitaminas">VITAMINAS</a></li>
-                    <li><a href="#snacks">SNACKS</a></li>
-                    <li><a href="#outlet" class="outlet">OUTLET</a></li>
+                    <li><a href="#parceiros">SEJA PARCEIRO</a></li>
+                    <li><a href="#contato">CONTATO</a></li>
                 </ul>
             </nav>
         </div>
@@ -75,18 +75,59 @@
     <!-- Hero Banner -->
     <section class="hero">
         <div class="hero-slider" id="heroSlider">
-            <!-- Slide 1 -->
+            <!-- Slide 1 - Institucional -->
             <div class="hero-slide active">
                 <div class="hero-content">
                     <div class="hero-text">
-                        <span class="hero-label">LANÇAMENTO</span>
+                        <span class="hero-label">DISTRIBUIDORA BIOVIT</span>
                         <h2 class="hero-title">
-                            TURBINE SEUS<br>
-                            <span class="highlight">RESULTADOS</span>
+                            28 ANOS DE<br>
+                            <span class="highlight">TRADIÇÃO E QUALIDADE</span>
                         </h2>
-                        <p class="hero-subtitle">Whey Protein isolado de última geração</p>
+                        <p class="hero-subtitle">Mais de 2500 produtos, mais de 100 fornecedores</p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary">
+                                VER CATÁLOGO
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button class="btn btn-secondary">
+                                SEJA PARCEIRO
+                                <i class="fas fa-handshake"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-calendar"></i>
+                            <h3>28 anos</h3>
+                            <p>De mercado</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-box"></i>
+                            <h3>2500+</h3>
+                            <p>Produtos</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-truck"></i>
+                            <h3>100+</h3>
+                            <p>Fornecedores</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 - Produtos -->
+            <div class="hero-slide">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <span class="hero-label">CATÁLOGO COMPLETO</span>
+                        <h2 class="hero-title">
+                            VARIEDADE E<br>
+                            <span class="highlight">QUALIDADE GARANTIDA</span>
+                        </h2>
+                        <p class="hero-subtitle">Suplementos, alimentos, cosméticos e muito mais</p>
                         <button class="btn btn-primary">
-                            COMPRAR AGORA
+                            CONHECER PRODUTOS
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
@@ -96,44 +137,23 @@
                 </div>
             </div>
 
-            <!-- Slide 2 -->
+            <!-- Slide 3 - Parceiros -->
             <div class="hero-slide">
                 <div class="hero-content">
                     <div class="hero-text">
-                        <span class="hero-label">PROMOÇÃO</span>
+                        <span class="hero-label">SEJA NOSSO PARCEIRO</span>
                         <h2 class="hero-title">
-                            ATÉ <span class="highlight">50% OFF</span><br>
-                            EM CREATINAS
+                            CONDIÇÕES ESPECIAIS<br>
+                            <span class="highlight">PARA SEU NEGÓCIO</span>
                         </h2>
-                        <p class="hero-subtitle">Ganhe mais força e resistência</p>
+                        <p class="hero-subtitle">Atendemos farmácias, drogarias e lojas especializadas</p>
                         <button class="btn btn-primary">
-                            VER OFERTAS
-                            <i class="fas fa-arrow-right"></i>
+                            FALAR COM CONSULTOR
+                            <i class="fas fa-phone"></i>
                         </button>
                     </div>
                     <div class="hero-image">
-                        <div class="product-showcase creatine"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="hero-slide">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <span class="hero-label">COMBOS</span>
-                        <h2 class="hero-title">
-                            KITS COMPLETOS<br>
-                            <span class="highlight">PARA SEU TREINO</span>
-                        </h2>
-                        <p class="hero-subtitle">Economia de até 30% em kits</p>
-                        <button class="btn btn-primary">
-                            MONTAR KIT
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                    <div class="hero-image">
-                        <div class="product-showcase combo"></div>
+                        <div class="product-showcase partners"></div>
                     </div>
                 </div>
             </div>
@@ -151,37 +171,93 @@
         </div>
     </section>
 
+    <!-- Valores da Empresa -->
+    <section class="values" id="sobre">
+        <div class="container">
+            <h2 class="section-title">Nossos Valores</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Agilidade e Parceria</h3>
+                    <p>Bem Vindo!</p>
+                    <p class="value-desc">A BIOVIT é uma empresa com mais de 28 anos de mercado, atuando na distribuição de suplementos alimentares, produtos naturais, alimentos e cosméticos. Com sede em Serra-ES, atendemos todo o estado do Espírito Santo e Rio de Janeiro.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Propósito</h3>
+                    <p>Saúde</p>
+                    <p class="value-desc">Trabalhamos com equipe de vendas diferenciada, abastecendo as principais redes em farmácias, drogarias, lojas de produtos naturais, supermercados e outros. Nosso diferencial é superar as expectativas, agilidade no transporte e marcas de qualidade.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Missão</h3>
+                    <p>Qualidade e Agilidade</p>
+                    <p class="value-desc">Garantir a excelência em distribuição e logística, proporcionando ao cliente a melhor experiência, desde o primeiro atendimento até o pós-venda.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Expectativa</h3>
+                    <p>Visão</p>
+                    <p class="value-desc">Estar entre as melhores distribuidoras de produtos farmacêuticos, suplementos e alimentos do estado do Espírito Santo.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Satisfação</h3>
+                    <p>Valores</p>
+                    <p class="value-desc">Satisfação do cliente, valorização e respeito às pessoas, excelência com simplicidade, responsabilidade social e respeito ao meio ambiente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Benefícios -->
     <section class="benefits">
         <div class="container">
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <i class="fas fa-shipping-fast"></i>
+                        <i class="fas fa-truck-fast"></i>
                     </div>
-                    <h3>Frete Grátis</h3>
-                    <p>Acima de R$ 250</p>
+                    <h3>Entrega Rápida</h3>
+                    <p>Todo Espírito Santo e Rio de Janeiro</p>
                 </div>
+
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-shield-check"></i>
                     </div>
-                    <h3>Compra Segura</h3>
-                    <p>Site protegido</p>
+                    <h3>Produtos Originais</h3>
+                    <p>100% Autenticidade Garantida</p>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h3>Parcelamento</h3>
-                    <p>Até 6x sem juros</p>
-                </div>
+
                 <div class="benefit-card">
                     <div class="benefit-icon">
                         <i class="fas fa-headset"></i>
                     </div>
-                    <h3>Atendimento</h3>
-                    <p>Nutricionista online</p>
+                    <h3>Atendimento Especializado</h3>
+                    <p>Equipe qualificada para te ajudar</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Melhores Preços</h3>
+                    <p>Condições especiais para parceiros</p>
                 </div>
             </div>
         </div>
@@ -190,23 +266,54 @@
     <!-- Categorias -->
     <section class="categories">
         <div class="container">
-            <h2 class="section-title">Categorias em Destaque</h2>
+            <h2 class="section-title">Nossas Categorias</h2>
             <div class="categories-grid">
                 <div class="category-card">
-                    <div class="category-image whey"></div>
+                    <div class="category-image">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
                     <h3>Whey Protein</h3>
+                    <p>Isolado, Concentrado e Hidrolisado</p>
                 </div>
+
                 <div class="category-card">
-                    <div class="category-image creatine"></div>
+                    <div class="category-image">
+                        <i class="fas fa-bolt"></i>
+                    </div>
                     <h3>Creatina</h3>
+                    <p>Monohidratada e Creapure</p>
                 </div>
+
                 <div class="category-card">
-                    <div class="category-image pre-workout"></div>
+                    <div class="category-image">
+                        <i class="fas fa-fire"></i>
+                    </div>
                     <h3>Pré-Treino</h3>
+                    <p>Energia e Performance</p>
                 </div>
+
                 <div class="category-card">
-                    <div class="category-image vitamins"></div>
+                    <div class="category-image">
+                        <i class="fas fa-pills"></i>
+                    </div>
                     <h3>Vitaminas</h3>
+                    <p>Complexos e Minerais</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3>Acessórios</h3>
+                    <p>Coqueteleiras e Kits</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Naturais</h3>
+                    <p>Produtos Orgânicos</p>
                 </div>
             </div>
         </div>
@@ -222,43 +329,56 @@
                     <button class="filter-tab" data-filter="whey">Whey</button>
                     <button class="filter-tab" data-filter="creatina">Creatina</button>
                     <button class="filter-tab" data-filter="pre-treino">Pré-Treino</button>
+                    <button class="filter-tab" data-filter="vitaminas">Vitaminas</button>
                 </div>
             </div>
 
             <div class="products-grid" id="productsGrid">
                 <!-- Produtos serão inseridos via JavaScript -->
             </div>
+
+            <div class="view-more">
+                <button class="btn btn-outline">
+                    VER TODOS OS PRODUTOS
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
     </section>
 
-    <!-- Banner CTA -->
-    <section class="cta-banner">
+    <!-- CTA Parceiros -->
+    <section class="cta-partners" id="parceiros">
         <div class="container">
             <div class="cta-content">
-                <h2>Não sabe qual suplemento escolher?</h2>
-                <p>Converse com nosso nutricionista esportivo gratuitamente</p>
-                <button class="btn btn-secondary">
-                    <i class="fas fa-comments"></i>
-                    FALAR COM ESPECIALISTA
+                <div class="cta-text">
+                    <h2>Seja nosso parceiro!</h2>
+                    <p>Condições especiais para farmácias, drogarias e lojas de produtos naturais</p>
+                </div>
+                <button class="btn btn-light">
+                    <i class="fas fa-handshake"></i>
+                    QUERO SER PARCEIRO
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="contato">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="footer-logo">
-                        <h3>SUPREMAX</h3>
-                        <p class="tagline">HIGH PERFORMANCE</p>
+                        <i class="fas fa-leaf"></i>
+                        <div>
+                            <h3>BIOVIT</h3>
+                            <p class="tagline">DISTRIBUIDORA</p>
+                        </div>
                     </div>
-                    <p>Suplementos de alta qualidade para potencializar seus resultados.</p>
+                    <p>28 anos de experiência distribuindo produtos de qualidade para todo Espírito Santo e Rio de Janeiro.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -266,8 +386,8 @@
                 <div class="footer-col">
                     <h4>Institucional</h4>
                     <ul>
-                        <li><a href="#">Sobre Nós</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Sobre a BIOVIT</a></li>
+                        <li><a href="#">Nossa História</a></li>
                         <li><a href="#">Trabalhe Conosco</a></li>
                         <li><a href="#">Seja um Revendedor</a></li>
                     </ul>
@@ -277,8 +397,8 @@
                     <h4>Atendimento</h4>
                     <ul>
                         <li><a href="#">Central de Ajuda</a></li>
-                        <li><a href="#">Trocas e Devoluções</a></li>
-                        <li><a href="#">Rastreamento</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
                         <li><a href="#">Formas de Pagamento</a></li>
                     </ul>
                 </div>
@@ -286,15 +406,16 @@
                 <div class="footer-col">
                     <h4>Contato</h4>
                     <ul class="contact-info">
-                        <li><i class="fas fa-phone"></i> (11) 98888-5421</li>
-                        <li><i class="fas fa-envelope"></i> contato@supremaxfit.com.br</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Serra-ES</li>
+                        <li><i class="fas fa-phone"></i> (27) 3333-4444</li>
+                        <li><i class="fas fa-envelope"></i> contato@biovit.com.br</li>
                         <li><i class="fas fa-clock"></i> Seg a Sex: 8h às 18h</li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 SUPREMAX - Todos os direitos reservados</p>
+                <p>&copy; 2025 BIOVIT Distribuidora - Todos os direitos reservados</p>
                 <p class="dev-credit">Desenvolvido por <strong>Prisma Tech</strong></p>
             </div>
         </div>
@@ -304,7 +425,7 @@
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <button class="modal-close" id="closeLogin">&times;</button>
-            <h2>Entrar na sua conta</h2>
+            <h2>Área do Cliente</h2>
             <form class="login-form">
                 <div class="form-group">
                     <label>E-mail</label>
@@ -338,7 +459,10 @@
                     <span>Total:</span>
                     <strong id="cartTotal">R$ 0,00</strong>
                 </div>
-                <button class="btn btn-primary full-width" onclick="goToCheckout()">FINALIZAR COMPRA</button>
+                <button class="btn btn-primary full-width">
+                    SOLICITAR ORÇAMENTO
+                    <i class="fas fa-paper-plane"></i>
+                </button>
             </div>
         </div>
     </div>
